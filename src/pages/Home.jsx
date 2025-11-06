@@ -1,9 +1,12 @@
 import React from "react";
+import WeatherWidget from "../widgets/WeatherWidget";
+import '../widgets/home.css'
 
 export default function Home() {
     return (
-    <div>
-            <h1>This is the home page.</h1>
+        <div className="home-content">
+            <h1>Weather</h1>
+            <WeatherWidget />
         </div>
     );
 }

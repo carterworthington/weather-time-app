@@ -34,6 +34,7 @@ export default function WeatherWidget({ onWeatherChange }) {
     return (
         <div className="weather-widget">
             <h2>{weather.location.name}</h2>
+            
             <p>
                 {weather.current.temperature}°C — {weather.current.weather_descriptions[0]}
             </p>

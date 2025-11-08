@@ -2,8 +2,8 @@ nav {
   display: flex;
   gap: 15px;
   background: linear-gradient(
-    rgba(16, 141, 183, 0.9),
-    rgba(16, 141, 183, 0.75)
+    rgba(14, 130, 192, 0.9),
+    rgba(1, 32, 75, 0.75)
   );
   backdrop-filter: blur(10px); /* stronger blur */
   -webkit-backdrop-filter: blur(10px); /* Safari fallback */

@@ -30,7 +30,9 @@ export default function Home() {
         >
 
 
-            <h1 style={{ color: "black" }}>Current Weather</h1>
+            <h1 style={{ color: "black" }}>Local Weather</h1>
+
+            <p>{new Date().toLocaleString("en-CA", { timeStyle: "short", dateStyle: "medium" })}</p>
 
 
             <Card
@@ -41,7 +43,8 @@ export default function Home() {
                     p: 2,
                     backdropFilter: "blur(10px)",
                     backgroundColor: "rgba(255,255,255,0.35)",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                    color: "black"
                 }}
 
             >

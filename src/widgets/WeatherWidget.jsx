@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
+import weatherIcons from "../utils/weatherIcons";
+import { Icon } from "@mui/material";
 
 export default function WeatherWidget({ onWeatherChange }) {
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const description = weather?.current?.weather_descriptions?.[0];
+    const icon = weatherIcons[description];
 
 
 
@@ -33,11 +38,15 @@ export default function WeatherWidget({ onWeatherChange }) {
 
     return (
         <div className="weather-widget">
-            <h2>{weather.location.name}</h2>
+            <div style={{display: "flex", gap: "1.5rem", alignItems: "center", marginBottom: "0"}}>
+                <h2 style={{fontSize: "3rem"}}>{weather.location.name}</h2>
+                {icon}
+            </div>
             
-            <p>
+            <p style={{fontSize: "2rem", marginBottom: "0"}}>
                 {weather.current.temperature}°C — {weather.current.weather_descriptions[0]}
             </p>
+
 
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import WeatherWidget from "../widgets/WeatherWidget";
 import weatherBackgrounds from "../utils/weatherBackgrounds";
 import '../widgets/home.css';
@@ -7,11 +7,13 @@ import CardContent from '@mui/material/CardContent';
 
 
 
+
 export default function Home() {
     const [weather, setWeather] = useState(null)
 
     const description = weather?.current?.weather_descriptions?.[0];
     const background = weatherBackgrounds[description];
+   
 
 
     return (
@@ -32,23 +34,28 @@ export default function Home() {
 
             <h1 style={{ color: "black" }}>Local Weather</h1>
 
-            <p>{new Date().toLocaleString("en-CA", { timeStyle: "short", dateStyle: "medium" })}</p>
+            <p style={{fontSize: "2rem"}}>{new Date().toLocaleString("en-CA", { timeStyle: "short", dateStyle: "medium" })}</p>
 
 
             <Card
                 variant="outlined"
                 sx={{
-                    width: 350,
+                    width: "65vw",
+                    margin: "auto",
                     borderRadius: 4,
-                    p: 2,
+                    p: 1,
                     backdropFilter: "blur(10px)",
                     backgroundColor: "rgba(255,255,255,0.35)",
                     boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-                    color: "black"
+                    color: "black",
+                    height: "20rem",
+                    paddingBottom: "0"
+                    
                 }}
 
             >
-                <CardContent>
+                <CardContent >
+                    
                     <WeatherWidget onWeatherChange={setWeather} />
                 </CardContent>
             </Card>

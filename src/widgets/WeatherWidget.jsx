@@ -12,6 +12,7 @@ export default function WeatherWidget() {
                 const response = await fetch("http://localhost:3001/weather?city=Edmonton");
                 const data = await response.json();
                 setWeather(data);
+                console.log("Fetched: ", data)
             } catch (err) {
                 setError("Failed to load weather data");
             } finally {

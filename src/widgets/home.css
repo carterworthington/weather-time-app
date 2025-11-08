@@ -1,5 +1,9 @@
 .home-content {
     margin: auto;
-    padding-left: 30px;
+    padding-left: 20px;
+}
+
+body {
+    background-color: #ffffff;
 }
 

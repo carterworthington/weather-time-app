@@ -1,6 +1,8 @@
 .home-content {
     margin: auto;
     padding-left: 20px;
+    margin-top: -60px;
+    padding-top: 60px;
 }
 
 body {

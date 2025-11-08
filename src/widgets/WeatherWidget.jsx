@@ -24,6 +24,8 @@ export default function WeatherWidget() {
 
     if (loading) return <p>Loading weather...</p>;
     if (error) return <p>{error}</p>;
+    if (!weather?.location || !weather?.current)
+            return <p>No weather data available</p>;
 
     return (
         <div className="weather-widget">

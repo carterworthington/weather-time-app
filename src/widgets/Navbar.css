@@ -1,13 +1,23 @@
 nav {
   display: flex;
   gap: 15px;
-  background-color: #108db7;
+  background: linear-gradient(
+    rgba(16, 141, 183, 0.9),
+    rgba(16, 141, 183, 0.75)
+  );
+  backdrop-filter: blur(10px); /* stronger blur */
+  -webkit-backdrop-filter: blur(10px); /* Safari fallback */
   padding: 0 1.5rem;
   height: 60px;
   align-items: center;
-  
-
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  position: sticky; /* stays above background */
+  top: 0;
+  z-index: 10;
+  border-radius: 1px;
 }
+
+
 
 nav a {
   text-decoration: none;

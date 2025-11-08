@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import WeatherWidget from "../widgets/WeatherWidget";
 import weatherBackgrounds from "../utils/weatherBackgrounds";
 import '../widgets/home.css';
@@ -13,7 +13,7 @@ export default function Home() {
 
     const description = weather?.current?.weather_descriptions?.[0];
     const background = weatherBackgrounds[description];
-   
+
 
 
     return (
@@ -32,30 +32,46 @@ export default function Home() {
         >
 
 
-            <h1 style={{ color: "black" }}>Local Weather</h1>
-
-            <p style={{fontSize: "2rem"}}>{new Date().toLocaleString("en-CA", { timeStyle: "short", dateStyle: "medium" })}</p>
+            <Card
+                variant="outlined"
+                sx={{
+                    margin: "auto",
+                    borderRadius: 4,
+                    p: 1,
+                    backdropFilter: "blur(10px)",
+                    backgroundColor: "rgba(255,255,255,0.05)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                    color: "black",
+                    marginBottom: "2rem",
+                    
+                    
+                }}>
+                <CardContent>
+                    <h1 style={{ color: "black", fontSize: "3rem" }}>Local Weather</h1>
+                    <p style={{ fontSize: "2rem" }}>{new Date().toLocaleString("en-CA", { timeStyle: "short", dateStyle: "medium" })}</p>
+                </CardContent>
+            </Card>
 
 
             <Card
                 variant="outlined"
                 sx={{
-                    width: "65vw",
+
                     margin: "auto",
                     borderRadius: 4,
                     p: 1,
                     backdropFilter: "blur(10px)",
-                    backgroundColor: "rgba(255,255,255,0.35)",
+                    backgroundColor: "rgba(255,255,255,0.45)",
                     boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
                     color: "black",
-                    height: "20rem",
+                    height: "15rem",
                     paddingBottom: "0"
-                    
+
                 }}
 
             >
                 <CardContent >
-                    
+
                     <WeatherWidget onWeatherChange={setWeather} />
                 </CardContent>
             </Card>

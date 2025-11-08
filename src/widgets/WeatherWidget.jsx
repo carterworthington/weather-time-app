@@ -43,7 +43,7 @@ export default function WeatherWidget({ onWeatherChange }) {
                 {icon}
             </div>
             
-            <p style={{fontSize: "2rem", marginBottom: "0"}}>
+            <p style={{fontSize: "2rem", marginBottom: "0", marginTop: "0"}}>
                 {weather.current.temperature}°C — {weather.current.weather_descriptions[0]}
             </p>
 

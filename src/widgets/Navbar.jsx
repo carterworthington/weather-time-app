@@ -7,7 +7,9 @@ export default function Navbar() {
         <nav >
             <Link to="/">Weather</Link>
             <Link to="/about">About</Link>
-            <TextField id="standard-basic" label="Search" variant="standard" />
+            <div className="searchBox">
+                <TextField id="standard-basic" label="Search" variant="standard" />
+            </div>
         </nav>
     )
 }

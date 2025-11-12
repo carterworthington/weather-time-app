@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import weatherIcons from "../utils/weatherIcons";
-import { Icon } from "@mui/material";
 
-export default function WeatherWidget({ onWeatherChange }) {
+
+export default function WeatherWidget({ city, onWeatherChange }) {
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -17,7 +17,8 @@ export default function WeatherWidget({ onWeatherChange }) {
 
         async function fetchWeather() {
             try {
-                const response = await fetch("http://localhost:3001/weather?city=Edmonton");
+                setLoading(true);
+                const response = await fetch(`http://localhost:3001/weather?city=${encodeURIComponent(city)}`);
                 const data = await response.json();
                 setWeather(data);
                 console.log("Fetched: ", data)
@@ -28,8 +29,9 @@ export default function WeatherWidget({ onWeatherChange }) {
                 setLoading(false);
             }
         }
-        fetchWeather();
-    }, []);
+
+      if (city)  fetchWeather();
+    }, [city]);
 
     if (loading) return <p>Loading weather...</p>;
     if (error) return <p>{error}</p>;

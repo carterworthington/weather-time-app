@@ -25,7 +25,12 @@ const weatherDescriptions = {
 };
 
 app.get("/weather", async (req, res) => {
-  const city = req.query.city || "Edmonton";
+  const city = req.query.city?.trim();
+  // Simple validation — only letters, spaces, and length check
+  if (!city || !/^[a-zA-Z\s]{2,40}$/.test(city)) {
+    return res.status(400).json({ error: "Invalid city name" });
+  }
+
   const response = await fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=53.55&longitude=-113.49&current=temperature_2m,weathercode`
   );

@@ -1,42 +1,39 @@
 nav {
   display: flex;
   gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+
   background: linear-gradient(
     rgba(14, 130, 192, 0.9),
-    rgba(1, 40, 94, 0.75)
+    rgba(1, 40, 94, 0.85)
   );
-  backdrop-filter: blur(10px); /* stronger blur */
-  -webkit-backdrop-filter: blur(10px); /* Safari fallback */
-  padding: 0 1.5rem;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   height: 60px;
-  align-items: center;
+  padding: 0 1rem;
+  margin: 0;
+  box-sizing: border-box;
+
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-  position: sticky; /* stays above background */
+  position: fixed;
   top: 0;
-  z-index: 10;
-  border-radius: 1px;
-  
-}
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
 
-
-
-nav a {
-  text-decoration: none;
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  display: inline-block;
-  transform: transform 0.25s ease-in-out;
-  padding: 5px;
-}
-
-nav a:hover {
-  transform: scale(1.12);
+  border-radius: 0; /* <— removes that curved top edge */
 }
 
 .searchBox {
   margin-left: auto;
   display: flex;
   align-items: center;
-  margin-top: -13px;
+  justify-content: flex-end;
+  padding-right: 0.5rem; /* ✅ keeps search bar inside */
+  box-sizing: border-box;
 }
+

@@ -6,7 +6,7 @@ import Navbar from "./widgets/Navbar";
 export default function App() {
   return (
     <>
-      <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />

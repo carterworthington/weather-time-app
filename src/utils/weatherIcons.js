@@ -4,7 +4,10 @@ import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import GrainIcon from "@mui/icons-material/Grain";
 
+
 const weatherIcons = {
+   "Clear": <WbSunnyIcon style={{ fontSize: 60, color: "#fbc02d" }} />,
+  "Clear sky": <WbSunnyIcon style={{ fontSize: 60, color: "#fbc02d" }} />,
   "Sunny": <WbSunnyIcon style={{ fontSize: 60, color: "#fbc02d" }} />,
   "Partly cloudy": <CloudIcon style={{ fontSize: 60, color: "#90a4ae" }} />,
   "Overcast": <CloudIcon style={{ fontSize: 60, color: "#607d8b" }} />,

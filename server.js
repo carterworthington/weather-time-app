@@ -26,27 +26,47 @@ const weatherDescriptions = {
 
 app.get("/weather", async (req, res) => {
   const city = req.query.city?.trim();
-  // Simple validation — only letters, spaces, and length check
   if (!city || !/^[a-zA-Z\s]{2,40}$/.test(city)) {
     return res.status(400).json({ error: "Invalid city name" });
   }
 
-  const response = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=53.55&longitude=-113.49&current=temperature_2m,weathercode`
-  );
-  const data = await response.json();
+  try {
+    // Step 1: get coordinates
+    const geoRes = await fetch(
+      `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`
+    );
+    const geoData = await geoRes.json();
 
-  const code = data.current.weathercode;
-  const description = weatherDescriptions[code] || "Unknown";
+    if (!geoData.results?.length) {
+      return res.status(404).json({ error: "City not found" });
+    }
 
-  res.json({
-    location: { name: city },
-    current: {
-      temperature: data.current.temperature_2m,
-      weather_descriptions: [description],
-      weather_icons: [],
-    },
-  });
+    const { latitude, longitude, name, country } = geoData.results[0];
+    console.log(`→ ${name}, ${country}: (${latitude}, ${longitude})`);
+
+    // Step 2: use those coordinates
+    const weatherRes = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weathercode`
+    );
+    const weatherData = await weatherRes.json();
+
+    const code = weatherData.current.weathercode;
+    const description = weatherDescriptions[code] || "Unknown";
+
+    res.json({
+      location: { name, country },
+      current: {
+        temperature: weatherData.current.temperature_2m,
+        weather_descriptions: [description],
+        weather_icons: [],
+      },
+    });
+  } catch (err) {
+    console.error("Server error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
+
+
 
 app.listen(3001, () => console.log("Proxy running on http://localhost:3001"));
